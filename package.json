@@ -1,0 +1,32 @@
+{
+  "name": "working-with-children-checker",
+  "version": "1.0.0",
+  "description": "A node module that uses Selenium WebDriver to automate validation of working with children credentials in Australia. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanBlewin/working-with-children-checker.git"
+  },
+  "keywords": [
+    "children",
+    "bluecard",
+    "validation",
+    "automatic",
+    "safety",
+    "childcare",
+    "school"
+  ],
+  "author": "Ryan Lewin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanBlewin/working-with-children-checker/issues"
+  },
+  "homepage": "https://github.com/ryanBlewin/working-with-children-checker#readme",
+  "dependencies": {
+    "geckodriver": "^1.20.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
