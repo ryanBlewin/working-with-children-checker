@@ -1,12 +1,9 @@
+const testData = require('./test_data');
 const qldChecker = require('./qld_checker');
 
-const testPerson = {
-  checking_name: 'Natasha Lynn Gregory',
-  checking_card_no: '951216',
-  checking_issue_no: '4',
-  checking_exp_day: '23',
-  checking_exp_month: 'Nov',
-  checking_exp_year: '20',
+async function getResult(testPerson) {
+  const result  = await qldChecker(testPerson)
+  console.log(result)
 }
 
-qldChecker(testPerson)
+getResult(testData.bluecard);
