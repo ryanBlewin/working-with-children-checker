@@ -1,24 +1,18 @@
 const testData = require('./test_data');
-const cleaner = require('./clean');
-const qldChecker = require('./qld_checker');
-const vicChecker = require('./vic_checker');
+const qldCleaner = require('./qld/clean');
+const qldChecker = require('./qld/checker');
+const vicCleaner = require('./vic/clean');
+const vicChecker = require('./vic/checker');
 
-async function getResult(testPerson) {
-  const result  = await qldChecker(cleaner(testPerson))
-  console.log(result)
+async function getQldResult(testPerson) {
+  const result  = await qldChecker(qldCleaner(testPerson))
+  console.log(`QLD test: ${result}`)
 }
-
-// module.exports =  async function getResult(testPerson) {
-//   const result  = await qldChecker(cleaner(testPerson))
-//   console.log(result)
-// }
-
-// getResult(testData.passCase);
-// getResult(testData.failCase);
 
 async function getVicResult(testPerson) {
-  const result  = await vicChecker(testPerson);
-  console.log(result)
+  const result  = await vicChecker(vicCleaner(testPerson));
+  console.log(`Vic test: ${result}`)
 }
 
-getVicResult(testData);
+getQldResult(testData.qldTest);
+getVicResult(testData.vicTest);

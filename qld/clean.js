@@ -1,4 +1,4 @@
-const { bluecard } = require("./test_data");
+// const bluecard  = require('../test_data');
 
 //  Registration number on card is combined with issue number and separated by /. Splits into two
 splitRegistrationNumber = (registrationNumber) => {

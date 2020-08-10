@@ -3,6 +3,7 @@ require('chromedriver');
 const {Builder, By, Key, until, WebDriver} = require('selenium-webdriver');
 
 module.exports = async function fillForm(blueCardDetails) {
+
   var driver = await new Builder()
     .forBrowser('firefox')
     // .forBrowser('chrome')

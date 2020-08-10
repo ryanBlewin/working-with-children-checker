@@ -2,7 +2,7 @@ require('geckodriver');
 require('chromedriver');
 const {Builder, By, Key, until, WebDriver} = require('selenium-webdriver');
 
-module.exports = async function fillForm(person) {
+module.exports = async function fillForm(blueCardDetails) {
   var driver = await new Builder()
     .forBrowser('firefox')
     // .forBrowser('chrome')
@@ -10,8 +10,8 @@ module.exports = async function fillForm(person) {
   try {
     await driver.manage().window().maximize();
     await driver.get('https://online.justice.vic.gov.au/wwccu/checkstatus.doj');  
-    await driver.findElement(By.id('cardnumber')).sendKeys(person.registration_number);
-    await driver.findElement(By.id('lastname')).sendKeys(person.holder_name);
+    await driver.findElement(By.id('cardnumber')).sendKeys(blueCardDetails.checking_card_no);
+    await driver.findElement(By.id('lastname')).sendKeys(blueCardDetails.checking_name);
     await driver.findElement(By.id('pageAction_submit')).click();
   }
   finally {
@@ -20,3 +20,5 @@ module.exports = async function fillForm(person) {
     return result
   }
 }
+
+
