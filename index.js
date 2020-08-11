@@ -6,6 +6,8 @@ const vicChecker = require('./vic/checker');
 const nswChecker = require('./nsw/checker');
 const waCleaner = require('./wa/clean');
 const waChecker = require('./wa/checker');
+const ntCleaner = require('./nt/clean');
+const ntChecker = require('./nt/checker');
 
 async function getQldResult(testPerson) {
   const result  = await qldChecker(qldCleaner(testPerson))
@@ -26,8 +28,13 @@ async function getWaResult(testPerson) {
   console.log(`WA test: ${result}`);
 }
 
+populateNt = (testPerson) => {
+  ntChecker(ntCleaner(testPerson));
+}
+
 // getQldResult(testData.qldTest);
 // getVicResult(testData.vicTest);
 // populateNsw(testData.nswTest, testData.nswUserTest);
-getWaResult(testData.waTest);
+// getWaResult(testData.waTest);
+populateNt(testData.ntTest);
 
