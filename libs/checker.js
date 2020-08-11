@@ -1,20 +1,31 @@
 require('chromedriver');
 const {Builder, By, Key, until, WebDriver} = require('selenium-webdriver');
 
+// Returns the string result of the validation
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    fullName: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//    issueNumber: 'Issue number of working with children check'
+//    expiryDay: 'Expiry day of working with children check'
+//    expiryMonth: 'Expiry Month of working with children check'
+//    expiryYear: 'Expiry Year of working with children check'
+//  }
 export async function validateForQLD(detailsToCheck) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
     await driver.get('https://www.bluecard.qld.gov.au/onlinevalidation/validationNoNav.aspx');  
-    await driver.findElement(By.id('FullName')).sendKeys(detailsToCheck.checking_name);
-    await driver.findElement(By.id('CardNumber')).sendKeys(detailsToCheck.checking_card_no);
-    await driver.findElement(By.id('IssueNumber')).sendKeys(detailsToCheck.checking_issue_no);
-    await driver.findElement(By.id('ExpiryDate_selDay')).sendKeys(detailsToCheck.checking_exp_day);
-    await driver.findElement(By.id('ExpiryDate_selMonth')).sendKeys(detailsToCheck.checking_exp_month);
-    await driver.findElement(By.id('ExpiryDate_selYear')).sendKeys(detailsToCheck.checking_exp_year);
+    await driver.findElement(By.id('FullName')).sendKeys(detailsToCheck.fullName);
+    await driver.findElement(By.id('CardNumber')).sendKeys(detailsToCheck.registrationNumber);
+    await driver.findElement(By.id('IssueNumber')).sendKeys(detailsToCheck.issueNumber);
+    await driver.findElement(By.id('ExpiryDate_selDay')).sendKeys(detailsToCheck.expiryDay);
+    await driver.findElement(By.id('ExpiryDate_selMonth')).sendKeys(detailsToCheck.expiryMonth);
+    await driver.findElement(By.id('ExpiryDate_selYear')).sendKeys(detailsToCheck.expiryYear);
     await driver.findElement(By.id('ValidateCardBtn')).click();
   }
   finally {
@@ -24,16 +35,23 @@ export async function validateForQLD(detailsToCheck) {
   }
 }
 
+// Returns the string result of the validation
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    lastName: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
 export async function validateForTAS(detailsToCheck) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
     await driver.get('https://wwcforms.justice.tas.gov.au/StatusCheck/StatusCheck.aspx');  
-    await driver.findElement(By.id('ctl00_ctl00_ctl00_ctlMainContent_ctlMainContent_MainContent_txtCardNumber')).sendKeys(detailsToCheck.checking_card_no);
-    await driver.findElement(By.id('ctl00_ctl00_ctl00_ctlMainContent_ctlMainContent_MainContent_txtSurname')).sendKeys(detailsToCheck.checking_name);
+    await driver.findElement(By.id('ctl00_ctl00_ctl00_ctlMainContent_ctlMainContent_MainContent_txtCardNumber')).sendKeys(detailsToCheck.registrationNumber);
+    await driver.findElement(By.id('ctl00_ctl00_ctl00_ctlMainContent_ctlMainContent_MainContent_txtSurname')).sendKeys(detailsToCheck.lastName);
     await driver.findElement(By.id('ctl00_ctl00_ctl00_ctlMainContent_ctlMainContent_MainContent_btnSearch_btnDB')).click();
   }
   finally {
@@ -43,16 +61,23 @@ export async function validateForTAS(detailsToCheck) {
   }
 }
 
+// Returns the string result of the validation
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    lastName: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
 export async function validateForVIC(detailsToCheck) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
     await driver.get('https://online.justice.vic.gov.au/wwccu/checkstatus.doj');  
-    await driver.findElement(By.id('cardnumber')).sendKeys(detailsToCheck.checking_card_no);
-    await driver.findElement(By.id('lastname')).sendKeys(detailsToCheck.checking_name);
+    await driver.findElement(By.id('cardnumber')).sendKeys(detailsToCheck.registrationNumber);
+    await driver.findElement(By.id('lastname')).sendKeys(detailsToCheck.lastName);
     await driver.findElement(By.id('pageAction_submit')).click();
   }
   finally {
@@ -62,16 +87,23 @@ export async function validateForVIC(detailsToCheck) {
   }
 }
 
+// Returns the string result of the validation
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    lastName: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
 export async function validateForWA(detailsToCheck) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
     await driver.get('https://workingwithchildren.wa.gov.au/card-validation');  
-    await driver.findElement(By.id('CardNumber')).sendKeys(detailsToCheck.checking_card_no);
-    await driver.findElement(By.id('Surname')).sendKeys(detailsToCheck.checking_name);
+    await driver.findElement(By.id('CardNumber')).sendKeys(detailsToCheck.registrationNumber);
+    await driver.findElement(By.id('Surname')).sendKeys(detailsToCheck.lastName);
     await driver.findElement(By.id('btnButtonSubmit')).click();
   }
   finally {
@@ -81,10 +113,24 @@ export async function validateForWA(detailsToCheck) {
   }
 }
 
+// NSW requires input from the user conducting the search and that of the user. Will not submit due to capthca but will autofll the form.
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    lastName: 'Last name of searchee',
+//    dob: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
+// 
+//  user = {
+//    name: 'Users name',
+//    email: 'Users email',
+//    phone: 'Users contact number'
+//  }  
 export async function fillForNSW(detailsToCheck, user) {
   var driver = await new Builder()
-    // .forBrowser('firefox')
-    .forBrowser('chrome')
+    .forBrowser('firefox')
+    // .forBrowser('chrome')
     .build();
 	await driver.manage().window().maximize();
 	await driver.get('https://wwccheck.ccyp.nsw.gov.au/Verifiers/Search');  
@@ -100,32 +146,53 @@ export async function fillForNSW(detailsToCheck, user) {
 	// Information of details being searched
 	await (await driver.findElement(By.id('PrimaryName_NoFirstGivenName'))).click();
 	await driver.findElement(By.id('PrimaryName_NoOtherGivenNames')).click();
-	await driver.findElement(By.id('PrimaryName_FamilyName')).sendKeys(detailsToCheck.checking_last_name);
-	await driver.findElement(By.id('BirthDate')).sendKeys(detailsToCheck.checking_dob);
-	await driver.findElement(By.id('AuthorisationNumber')).sendKeys(detailsToCheck.checking_registration_no);
+	await driver.findElement(By.id('PrimaryName_FamilyName')).sendKeys(detailsToCheck.lastName);
+	await driver.findElement(By.id('BirthDate')).sendKeys(detailsToCheck.dob);
+	await driver.findElement(By.id('AuthorisationNumber')).sendKeys(detailsToCheck.registrationNumber);
 }
 
+// Will not submit due to capthca but will autofll the form.
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    firstName: 'Last name of searchee',
+//    lastName: 'Date of birth of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
 export async function fillForNT(detailsToCheck) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
     await driver.get('https://forms.pfes.nt.gov.au/safent/CheckValidity.aspx?IsValidityCheck=true');  
-    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtGivenName_I')).sendKeys(detailsToCheck.checking_first_name);
-    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtSurname_I')).sendKeys(detailsToCheck.checking_last_name);
-    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtClearanceNumber_I')).sendKeys(detailsToCheck.checking_card_no);
+    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtGivenName_I')).sendKeys(detailsToCheck.firstName);
+    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtSurname_I')).sendKeys(detailsToCheck.lastName);
+    await driver.findElement(By.id('MainContent_pnlCheckValidity_txtClearanceNumber_I')).sendKeys(detailsToCheck.registrationNumber);
   }
   finally {
     return
   }
 }
 
+// SA requires input from the user conducting the search and that of the user. Will not submit due to capthca but will autofll the form.
+// The expected inputs are:
+// 
+//  detailsToCheck = {
+//    lastName: 'Last name of searchee',
+//    registrationNumber: 'Registration number of working with children check'
+//  }
+// 
+//  user = {
+//    name: 'Users name',
+//    email: 'Users email',
+//    reason: 'reason for search'
+//  }  
 export async function fillForSA(detailsToCheck, user) {
   var driver = await new Builder()
-    .forBrowser('firefox')
-    // .forBrowser('chrome')
+    // .forBrowser('firefox')
+    .forBrowser('chrome')
     .build();
   try {
     await driver.manage().window().maximize();
