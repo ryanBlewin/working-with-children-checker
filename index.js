@@ -1,8 +1,8 @@
-const testData = require('./test_data');
 const qldCleaner = require('./qld/clean');
 const qldChecker = require('./qld/checker');
 const vicCleaner = require('./vic/clean');
 const vicChecker = require('./vic/checker');
+const nswCleaner = require('./nsw/clean');
 const nswChecker = require('./nsw/checker');
 const waCleaner = require('./wa/clean');
 const waChecker = require('./wa/checker');
@@ -15,21 +15,21 @@ const tasChecker = require('./tas/checker');
 
 async function getQldResult(testPerson) {
   const result  = await qldChecker(qldCleaner(testPerson))
-  console.log(`QLD test: ${result}`)
+  return result
 }
 
 async function getVicResult(testPerson) {
   const result  = await vicChecker(vicCleaner(testPerson));
-  console.log(`Vic test: ${result}`)
+  return result
 }
 
 populateNsw = (testPerson, testUser) => {
-  nswChecker(testPerson, testUser);
+  nswChecker(nswCleaner(testPerson), testUser);
 }
 
 async function getWaResult(testPerson) {
   const result = await waChecker(waCleaner(testPerson));
-  console.log(`WA test: ${result}`);
+  return result
 }
 
 populateNt = (testPerson) => {
@@ -42,14 +42,29 @@ populateSa = (testPerson, testUser) => {
 
 async function getTasResult(testPerson) {
   const result = await tasChecker(tasCleaner(testPerson));
-  console.log(`TAS test: ${result}`);
+  return result
 }
 
-// getQldResult(testData.qldTest);
-// getVicResult(testData.vicTest);
-// populateNsw(testData.nswTest, testData.nswUserTest);
-// getWaResult(testData.waTest);
-// populateNt(testData.ntTest);
-// populateSa(testData.saTest, testData.saUserTest);
-getTasResult(testData.tasTest);
-
+module.exports = async function startSearch(state, bluecardDetails, userDetails) {
+  switch(state) {
+    case 'QLD':
+      return getQldResult(bluecardDetails);
+    case 'VIC':
+      return getVicResult(bluecardDetails);
+    case 'TAS':
+      return getTasResult(bluecardDetails);
+    case 'WA':
+      return getWaResult(bluecardDetails);
+    case 'NSW':
+      populateNsw(bluecardDetails, userDetails);
+      break;
+    case 'NT':
+      populateNt(bluecardDetails);
+      break;
+    case 'SA':
+      populateSa(bluecardDetails, userDetails);
+      break;
+    default:
+      return 'Unable to perform search'
+  }
+}
