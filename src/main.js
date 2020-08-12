@@ -4,7 +4,7 @@ import * as checker from '../libs/checker';
 // The expected inputs are:
 // 
 //  detailsToCheck = {
-//    fullName: 'Date of birth of searchee',
+//    fullName: 'Full name of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //    issueNumber: 'Issue number of working with children check'
 //    expiryDay: 'Expiry day of working with children check'
@@ -20,7 +20,7 @@ export async function qld(detailsToBeChecked) {
 // The expected inputs are:
 // 
 //  detailsToCheck = {
-//    lastName: 'Date of birth of searchee',
+//    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
 export async function vic(detailsToBeChecked) {
@@ -32,7 +32,7 @@ export async function vic(detailsToBeChecked) {
 // The expected inputs are:
 // 
 //  detailsToCheck = {
-//    lastName: 'Date of birth of searchee',
+//    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
 export async function wa(detailsToBeChecked) {
@@ -44,7 +44,7 @@ export async function wa(detailsToBeChecked) {
 // The expected inputs are:
 // 
 //  detailsToCheck = {
-//    lastName: 'Date of birth of searchee',
+//    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
 export async function tas(detailsToBeChecked) {
@@ -66,8 +66,8 @@ export async function tas(detailsToBeChecked) {
 //    email: 'Users email',
 //    phone: 'Users contact number'
 //  }  
-export function nsw(detailsToBeChecked) {
-  checker.fillForNSW(detailsToBeChecked);
+export function nsw(detailsToBeChecked, user) {
+  checker.fillForNSW(detailsToBeChecked, user);
 }
 
 // SA requires input from the user conducting the search and that of the user. Will not submit due to capthca but will autofll the form.
@@ -91,8 +91,8 @@ export function sa(detailsToBeChecked) {
 // The expected inputs are:
 // 
 //  detailsToCheck = {
-//    firstName: 'Last name of searchee',
-//    lastName: 'Date of birth of searchee',
+//    firstName: 'First name of searchee',
+//    lastName: 'Surname birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
 export function nt(detailsToBeChecked) {
