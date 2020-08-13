@@ -1,4 +1,5 @@
-import * as checker from '../libs/checker';
+// import * as checker from '../libs/checker';
+const checker = require('../libs/checker');
 
 // Returns the string result of the validation
 // The expected inputs are:
@@ -11,7 +12,7 @@ import * as checker from '../libs/checker';
 //    expiryMonth: 'Expiry Month of working with children check'
 //    expiryYear: 'Expiry Year of working with children check'
 //  }
-export async function qld(detailsToBeChecked) {
+async function qld(detailsToBeChecked) {
   const result = await checker.validateForQLD(detailsToBeChecked);
   return result
 }
@@ -23,7 +24,7 @@ export async function qld(detailsToBeChecked) {
 //    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function vic(detailsToBeChecked) {
+async function vic(detailsToBeChecked) {
   const result = await checker.validateForVIC(detailsToBeChecked);
   return result
 }
@@ -35,7 +36,7 @@ export async function vic(detailsToBeChecked) {
 //    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function wa(detailsToBeChecked) {
+async function wa(detailsToBeChecked) {
   const result = await checker.validateForWA(detailsToBeChecked);
   return result
 }
@@ -47,7 +48,7 @@ export async function wa(detailsToBeChecked) {
 //    lastName: 'Surname of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function tas(detailsToBeChecked) {
+async function tas(detailsToBeChecked) {
   const result = await checker.validateForTAS(detailsToBeChecked);
   return result
 }
@@ -66,7 +67,7 @@ export async function tas(detailsToBeChecked) {
 //    email: 'Users email',
 //    phone: 'Users contact number'
 //  }  
-export function nsw(detailsToBeChecked, user) {
+function nsw(detailsToBeChecked, user) {
   checker.fillForNSW(detailsToBeChecked, user);
 }
 
@@ -83,7 +84,7 @@ export function nsw(detailsToBeChecked, user) {
 //    email: 'Users email',
 //    reason: 'reason for search'
 //  }  
-export function sa(detailsToBeChecked) {
+function sa(detailsToBeChecked) {
   checker.fillForSA(detailsToBeChecked);
 }
 
@@ -95,6 +96,16 @@ export function sa(detailsToBeChecked) {
 //    lastName: 'Surname birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export function nt(detailsToBeChecked) {
+function nt(detailsToBeChecked) {
   checker.fillForNT(detailsToBeChecked);
+}
+
+module.exports = {
+  qld: qld,
+  vic: vic,
+  wa: wa,
+  tas: tas,
+  // nsw: nsw, 
+  // sa: sa,
+  // nt: nt
 }

@@ -12,7 +12,7 @@ const {Builder, By, Key, until, WebDriver} = require('selenium-webdriver');
 //    expiryMonth: 'Expiry Month of working with children check'
 //    expiryYear: 'Expiry Year of working with children check'
 //  }
-export async function validateForQLD(detailsToCheck) {
+async function validateForQLD(detailsToCheck) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -42,7 +42,7 @@ export async function validateForQLD(detailsToCheck) {
 //    lastName: 'Date of birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function validateForTAS(detailsToCheck) {
+async function validateForTAS(detailsToCheck) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -68,7 +68,7 @@ export async function validateForTAS(detailsToCheck) {
 //    lastName: 'Date of birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function validateForVIC(detailsToCheck) {
+async function validateForVIC(detailsToCheck) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -94,7 +94,7 @@ export async function validateForVIC(detailsToCheck) {
 //    lastName: 'Date of birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function validateForWA(detailsToCheck) {
+async function validateForWA(detailsToCheck) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -127,7 +127,7 @@ export async function validateForWA(detailsToCheck) {
 //    email: 'Users email',
 //    phone: 'Users contact number'
 //  }  
-export async function fillForNSW(detailsToCheck, user) {
+async function fillForNSW(detailsToCheck, user) {
   var driver = await new Builder()
     .forBrowser('firefox')
     // .forBrowser('chrome')
@@ -159,7 +159,7 @@ export async function fillForNSW(detailsToCheck, user) {
 //    lastName: 'Date of birth of searchee',
 //    registrationNumber: 'Registration number of working with children check'
 //  }
-export async function fillForNT(detailsToCheck) {
+async function fillForNT(detailsToCheck) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -189,7 +189,7 @@ export async function fillForNT(detailsToCheck) {
 //    email: 'Users email',
 //    reason: 'reason for search'
 //  }  
-export async function fillForSA(detailsToCheck, user) {
+async function fillForSA(detailsToCheck, user) {
   var driver = await new Builder()
     // .forBrowser('firefox')
     .forBrowser('chrome')
@@ -211,4 +211,14 @@ export async function fillForSA(detailsToCheck, user) {
   finally {
     return
   }
+}
+
+module.exports = {
+  validateForQLD: validateForQLD,
+  validateForVIC: validateForVIC,
+  validateForWA: validateForWA,
+  validateForTAS: validateForTAS,
+  // fillForNSW: fillForNSW, 
+  // fillForSA: fillForSA,
+  // fillForNT: fillForNT,
 }
