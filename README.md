@@ -22,7 +22,7 @@ Takes an object as input and fully automates the validation for Queensland. Retu
    registrationNumber: 'Registration number of working with children check'
    issueNumber: 'Issue number of working with children check'
    expiryDay: 'Expiry day of working with children check'
-   expiryMonth: 'Expiry Month of working with children check'
+   expiryMonth: 'Expiry Month of working with children check written as Jan, Feb, Mar, etc'
    expiryYear: 'Expiry Year of working with children check'
  }
 ```
@@ -53,7 +53,7 @@ Takes an object as input and fully automates the validation for Tasmania. Return
    registrationNumber: 'Registration number of working with children check'
  }
 ```
-### nsw(detailsToBeChecked, user)
+<!-- ### nsw(detailsToBeChecked, user)
 New South Wales requires information of the user conducting the search and that of the searchee. Will not submit due to captcha but will autofll the form.
 ```
 // Expected input
@@ -93,5 +93,6 @@ Northern Territory will not submit due to captcha, but will autofill the form.
    lastName: 'Last name of searchee',
    dob: 'Date of birth of searchee',
    registrationNumber: 'Registration number of working with children check'
- } 
-```
+ }  
+```-->
+Currently the functions for NSW, SA and NT are disabled due to the presence of captchas on the validation sites. Functions have been created to autofill the data, however the browser detects selenium and forces the user to solve multiple questions. This currently take more time than it would take the user to do manually. I am searching for a workaround. 
