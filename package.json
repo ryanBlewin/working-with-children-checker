@@ -2,8 +2,7 @@
   "name": "working-with-children-checker",
   "version": "1.0.0",
   "description": "A node module that uses Selenium WebDriver to automate validation of working with children credentials in Australia. ",
-  "main": "index.js",
-  "type": "module",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
